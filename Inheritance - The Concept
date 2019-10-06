@@ -1,1 +1,284 @@
+# Inheritance::
 
+Inheritance is one of the cornerstones of object-oriented programming because it allows the creation of hierarchical classifications.Using inheritance, you can create a general class that defines traits common to a set of related items. 
+
+In the terminology of Java, a class that is inherited is called a superclass. The class that does the inheriting is called
+a subclass.
+
+To inherit a class, you simply incorporate the definition of one class into another by using
+the extends keyword.
+
+// simple inheritance example
+
+class A{
+    
+    void displayA(){
+        System.out.println("this is A");
+    }
+}
+
+class B extends A{
+    void displayB(){
+        displayA();
+        System.out.println("this is B");
+    }
+}
+
+class Main{
+    public static void main(String[] arg){
+        A a = new A();
+        B b = new B();
+        a.displayA();
+        b.displayB();
+    }
+}
+
+OUTPUT:
+this is A
+this is A
+this is B
+
+
+general format of inheritance
+
+class subclass-name extends superclass-name {
+// body of class
+}
+
+NOTE: Java does not support the inheritance of multiple superclasses into a single subclass.
+
+
+
+## Member Access and Inheritance:
+
+a subclass includes all of the members of its superclass, it cannot access those
+members of the superclass that have been declared as private.
+
+
+/*  In a class hierarchy, private members remain
+    private to their class.
+    This program contains an error and will not
+    compile.
+*/
+
+// Create a superclass.
+class A {
+    int i; // public by default
+    private int j; // private to A
+    void setij(int x, int y) {
+        i = x;
+        j = y;
+    }
+}
+
+// A's j is not accessible here.
+class B extends A {
+    int total;
+    void sum() {
+        total = i + j; // ERROR, j is not accessible here
+    }
+}
+
+class Access {
+    public static void main(String args[]) {
+        B subOb = new B();
+        subOb.setij(10, 12);
+        subOb.sum();
+        System.out.println("Total is " + subOb.total);
+    }
+}
+
+## A Superclass Variable Can Reference a Subclass Object:
+
+
+class Main{
+    public static void main(String[] arg){
+        A a = new A();
+        A b = new B();  // possible
+        a.displayA();
+        b.displayB();
+    }
+}
+
+OUTPUT:
+this is A
+this is A
+this is B
+
+
+## Using super:
+
+Whenever a subclass needs to refer to its immediate superclass, it can do so by use of the keyword super.
+
+super has two general forms. The first calls the superclass’ constructor. The second is used to access a member of the superclass that has been hidden by a member of a subclass
+
+Using super to Call Superclass Constructors:
+
+A subclass can call a constructor defined by its superclass by use of the following form of super:
+
+super(arg-list);
+
+
+A Second Use for super:
+
+The second form of super acts somewhat like this, except that it always refers to the superclass of the subclass in which it is used. This usage has the following general form:
+
+super.member
+
+## Creating a Multilevel Hierarchy:
+
+// Extend BoxWeight to include shipping costs.
+// Start with Box.
+class Box {
+    private double width;
+    private double height;
+    private double depth;
+// construct clone of an object
+    Box(Box ob) { // pass object to constructor
+        width = ob.width;
+        height = ob.height;
+        depth = ob.depth;
+    }
+// constructor used when all dimensions specified
+    Box(double w, double h, double d) {
+        width = w;
+        height = h;
+        depth = d;
+    }
+// constructor used when no dimensions specified
+    Box() {
+        width = -1; // use -1 to indicate
+        height = -1; // an uninitialized
+        depth = -1; // box
+    }
+// constructor used when cube is created
+    Box(double len) {
+        width = height = depth = len;
+    }
+// compute and return volume
+    double volume() {
+        return width * height * depth;
+    }
+}
+// Add weight.
+class BoxWeight extends Box {
+    double weight; // weight of box
+// construct clone of an object
+    BoxWeight(BoxWeight ob) { // pass object to constructor
+        super(ob);
+        weight = ob.weight;
+    }
+// constructor when all parameters are specified
+    BoxWeight(double w, double h, double d, double m) {
+        super(w, h, d); // call superclass constructor
+        weight = m;
+    }
+// default constructor
+    BoxWeight() {
+        super();
+        weight = -1;
+    }   
+// constructor used when cube is created
+    BoxWeight(double len, double m) {
+        super(len);
+        weight = m;
+    }
+}
+// Add shipping costs.
+class Shipment extends BoxWeight {
+    double cost;
+    // construct clone of an object
+    Shipment(Shipment ob) { // pass object to constructor
+        super(ob);
+        cost = ob.cost;
+    }
+// constructor when all parameters are specified
+Shipment(double w, double h, double d,
+    double m, double c) {
+        super(w, h, d, m); // call superclass constructor
+        cost = c;
+    }
+// default constructor
+    Shipment() {
+        super();
+        cost = -1;
+    }
+// constructor used when cube is created
+    Shipment(double len, double m, double c) {
+        super(len, m);
+        cost = c;
+    }
+}
+class DemoShipment {
+    public static void main(String args[]) {
+        Shipment shipment1 =
+        new Shipment(10, 20, 15, 10, 3.41);
+        Shipment shipment2 =
+        new Shipment(2, 3, 4, 0.76, 1.28);
+        double vol;
+        vol = shipment1.volume();
+        System.out.println("Volume of shipment1 is " + vol);
+        System.out.println("Weight of shipment1 is "
+        + shipment1.weight);
+        System.out.println("Shipping cost: $" + shipment1.cost);
+        System.out.println();
+        vol = shipment2.volume();
+        System.out.println("Volume of shipment2 is " + vol);
+        System.out.println("Weight of shipment2 is "
+        + shipment2.weight);
+        System.out.println("Shipping cost: $" + shipment2.cost);
+    }
+}
+
+The output of this program is shown here:
+
+Volume of shipment1 is 3000.0
+Weight of shipment1 is 10.0
+Shipping cost: $3.41
+Volume of shipment2 is 24.0
+Weight of shipment2 is 0.76
+Shipping cost: $1.28
+
+
+
+## Method Overriding:
+
+In a class hierarchy, when a method in a subclass has the same name and type signature as
+a method in its superclass, then the method in the subclass is said to override the method in
+the superclass.
+
+// Method overriding.
+class A {
+    int i, j;
+    A(int a, int b) {
+        i = a;
+        j = b;
+    }
+// display i and j
+    void show() {
+        System.out.println("i and j: " + i + " " + j);
+    }
+}
+
+class B extends A {
+    int k;
+    B(int a, int b, int c) {
+        super(a, b);
+        k = c;
+    }
+// display k – this overrides show() in A
+    void show() {
+        System.out.println("k: " + k);
+    }
+}
+
+class Override {
+    public static void main(String args[]) {
+        B subOb = new B(1, 2, 3);
+        subOb.show(); // this calls show() in B
+    }
+}
+
+
+The output produced by this program is shown here:
+k: 3
