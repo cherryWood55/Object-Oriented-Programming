@@ -1,0 +1,49 @@
+Overriding in Java
+In any object-oriented programming language, Overriding is a feature that allows a subclass or child class to provide a specific implementation of a method that is already provided by one of its super-classes or parent classes. When a method in a subclass has the same name, same parameters or signature and same return type(or sub-type) as a method in its super-class, then the method in the subclass is said to override the method in the super-class.
+
+Rules for method overriding:
+
+1.Overriding and Access-Modifiers : The access modifier for an overriding method can allow more, but not less, access than the overridden method. For example, a protected instance method in the super-class can be made public, but not private, in the subclass. Doing so, will generate compile-time error.
+
+2.Final methods can not be overridden : If we don’t want a method to be overridden, we declare it as final. Please see Using final with Inheritance .
+
+3.Static methods can not be overridden(Method Overriding vs Method Hiding) : When you defines a static method with same signature as a static method in base class, it is known as method hiding.
+The following table summarizes what happens when you define a method with the same signature as a method in a super-class.
+
+A  simple example for overriding:
+// Base Class 
+class Parent { 
+    void show() 
+    { 
+        System.out.println("Parent's show()"); 
+    } 
+} 
+  
+// Inherited class 
+class Child extends Parent { 
+    // This method overrides show() of Parent 
+    @Override
+    void show() 
+    { 
+        System.out.println("Child's show()"); 
+    } 
+} 
+  
+// Driver class 
+class Main { 
+    public static void main(String[] args) 
+    { 
+        // If a Parent type reference refers 
+        // to a Parent object, then Parent's 
+        // show is called 
+        Parent obj1 = new Parent(); 
+        obj1.show(); 
+  
+        // If a Parent type reference refers 
+        // to a Child object Child's show() 
+        // is called. This is called RUN TIME 
+        // POLYMORPHISM. 
+        Parent obj2 = new Child(); 
+        obj2.show(); 
+    } 
+} 
