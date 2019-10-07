@@ -1,0 +1,39 @@
+--class variables in Java--
+
+Class Variables are an important concept in java programming. This  Class variables also known as static variables are declared 
+with the static keyword in a class, but outside a method, constructor or a block. There would only be one copy of each class 
+variable per class, regardless of how many objects are created from it.
+
+--Important Terminology--
+When a number of objects are created from the same class blueprint, they each have their own distinct copies of instance variables. 
+In the case of the 'Car' class, the instance variables are cadence, gear, and speed. 
+Each 'car' object has its own values for these variables, stored in different memory locations.
+
+variables that are common to all objects is gained by the static modifier.
+Fields that have the static modifier in their declaration are called static fields or class variables. 
+
+
+
+For example, suppose you want to create a number of 'Car' objects and assign each a serial number, beginning with 1 for the first object. This ID number is unique to each object and is therefore an instance variable. At the same time, you need a field to keep track of how many Bicycle objects have been created so that you know what ID to assign to the next one. Such a field is not related to any individual object, but to the class as a whole. For this you need a class variable, numberOfBicycles, as follows:
+
+
+Example Syntax
+public class Car {
+        
+    private int cadence;
+    private int gear;
+    private int speed;
+        
+    // add an instance variable for the object ID
+    private int id;
+    
+    // add a class variable for the
+    // number of Car objects instantiated
+    private static int numberOfCars = 0;
+        ...
+}
+
+
+Class variables are referenced by the class name itself, as in
+
+Car.numberOfBicycles
