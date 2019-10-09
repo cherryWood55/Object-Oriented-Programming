@@ -10,6 +10,12 @@ Inheritance is an important pillar of OOP(Object Oriented Programming). It is th
 
 *Reusability: Inheritance supports the concept of “reusability”, i.e. when we want to create a new class and there is already a class that includes some of the code that we want, we can derive our new class from the existing class. By doing this, we are reusing the fields and methods of the existing class.
 
+---Why we use inheritance in java---
+
+
+    For Method Overriding (so runtime polymorphism can be achieved).
+    For Code Reusability.
+
 ---How to use inheritance in Java---
 
 The keyword used for inheritance is extends.
