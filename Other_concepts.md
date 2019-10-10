@@ -1,4 +1,4 @@
-Data Abstrtaction - Data Abstraction is the process of providing only the essential information, while hiding all the background details. It creates black boxes for the certain processes, so that the user doesn't know the intricate details of what is happening. In OOP, it is implemented through functions. Creating a function, the user doesn't know what commands constitute the function, but can use it for the requisite tasks.
+Data Abstraction - Data Abstraction is the process of providing only the essential information, while hiding all the background details. It creates black boxes for the certain processes, so that the user doesn't know the intricate details of what is happening. In OOP, it is implemented through functions. Creating a function, the user doesn't know what commands constitute the function, but can use it for the requisite tasks.
 
 Encapsulation - The property of wrapping up data values and functions into a single unit, such that all of them are related to each other and serve a common functionality. It is implemented in OOP through class. Thus, class forms a blueprint and wraps up various related functions and data values.
 
