@@ -3,3 +3,5 @@ Data Abstraction - Data Abstraction is the process of providing only the essenti
 Encapsulation - The property of wrapping up data values and functions into a single unit, such that all of them are related to each other and serve a common functionality. It is implemented in OOP through class. Thus, class forms a blueprint and wraps up various related functions and data values.
 
 Polymorphism - The property of a function to exhibit different behaviour under different circumstances is called Polymorphism. It is usually implemented through function overloading. Suchh functions, having the same name, behave differently when different parameters are passed to it.
+
+Composition - The principle that classes should achieve polymorphic behavior and code reuse by their composition (by containing instances of other classes that implement the desired functionality) rather than inheritance from a base or parent class. To favor composition over inheritance is a design principle that gives the design higher flexibility - it is better to compose what an object can do (HAS-A) than extend what it is (IS-A).
