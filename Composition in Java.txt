@@ -1,0 +1,46 @@
+Composition in Java is achieved by using instance variables that refer to other objects. For example, a Person class can have a Job instance variable which refers to their actual job, in this case Developer.
+
+First we define Job as an interface, for polymorphism:
+
+public interface Job {
+    public String getRole();
+    public void setRole(String role);
+    public long getSalary();
+    public void setSalary(long salary);
+}
+
+Then we define the Developer Job:
+
+public class DeveloperJob implements Job {
+    private String role = "Developer";
+    private long salary = 1000;
+
+    public String getRole() {
+        return role;
+    }
+    public void setRole(String role) {
+        this.role = role;
+    }
+    public long getSalary() {
+        return salary;
+    }
+    public void setSalary(long salary) {
+        this.salary = salary;
+    }
+}
+
+Finally we can use composition in the Person class:
+
+public class Person {
+    //composition - has-a relationship
+    private Job job;
+
+    public Person(){
+        this.job=new DeveloperJob();
+    }
+    public long getSalary() {
+        return job.getSalary();
+    }
+}
+
+The composed Job could easily be replaced by some other one, and the salary will be returned polymorphically.
