@@ -63,7 +63,7 @@ bool Stack::push(int page) {
   return true;
  }
 }
-Finally, create the main function to create a new instance of the stack, which you can see appearing here:
+// Finally, create the main function to create a new instance of the stack, which you can see appearing here:
 
 int main( ) {
  //new stack
