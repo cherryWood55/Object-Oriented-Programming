@@ -9,7 +9,7 @@ The word polymorphism means having many forms. In simple words, we can define po
 
 **Compile time polymorphism**: It is also known as static polymorphism. This type of polymorphism is achieved by function overloading or operator overloading.
 
-**Method Overloading**: When there are multiple functions with same name but different parameters then these functions are said to be overloaded. Functions can be overloaded by change in number of arguments or/and change in type of arguments.
+**Method Overloading**: When there are multiple functions with the same name, but different parameters then these functions are said to be overloaded. Functions can be overloaded by change in number of arguments or/and change in type of arguments.
 
 # Inheritance
 
